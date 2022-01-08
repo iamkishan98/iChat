@@ -29,6 +29,13 @@ io.on('connection', (socket)=>{
         console.log(message);
         socket.broadcast.emit('receive', {message: message, name:users[socket.id] } );
     });
+
+    socket.on('disconnect',(message)=>{
+        console.log(message);
+        socket.broadcast.emit('left',(users[socket.id]));
+        delete users[socket.id];
+    });
+
 });
 
 

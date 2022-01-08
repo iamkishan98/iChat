@@ -33,3 +33,8 @@ socket.on('user-joined', (user)=>{
 socket.on('receive', (data)=>{
     append(`${data.name}: ${data.message}`,'left');
 });
+
+socket.on('left',(user)=>{
+    console.log(user);
+    append(`${user} left the chat`,'left');
+});
